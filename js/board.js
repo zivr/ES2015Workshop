@@ -63,7 +63,7 @@ class Board {
     }
 
     _checkIsWinning() {
-        var isWinning = this.squares.every(function(square, index) {
+        var isWinning = this.squares.every((square, index) =>{
             return square.isBlank || square.value === (index + 1);
         });
         if (isWinning) {
@@ -74,8 +74,8 @@ class Board {
     _isSolvable() {
         var inversions = 0;
         var squares = this.squares;
-        squares.every(function(squareI, idx) {
-            squares.every(function(squareJ) {
+        squares.every((squareI, idx) => {
+            squares.every((squareJ) => {
                 if (squareJ.isBlank || squareI.value > squareJ.value){
                     inversions++;
                 }
