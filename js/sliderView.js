@@ -1,5 +1,5 @@
 class SliderView {
-    constructor(board , $rootElement) {
+    constructor(board, $rootElement) {
         this._board = board;
         this._$rootEl = $rootElement;
 
@@ -10,9 +10,9 @@ class SliderView {
     resetUI() {
         const rows = this._board.rowsCount;
 
-        this._$rootEl.addClass('board board--'+rows+'-in-row');
+        this._$rootEl.addClass('board board--' + rows + '-in-row');
 
-        this._board.squares.forEach((square) => {
+        for (let square of this._board.squares) {
             const $squareEl = $('<div class="board__cell">' + (square.value || '&nbsp;') + '</div>');
             $squareEl.data('square', square);
             if (square.isBlank) {
@@ -28,7 +28,7 @@ class SliderView {
             if (!square.isBlank) {
                 $squareEl.click(this.onSquareClicked.bind(this));
             }
-        });
+        }
     }
 
     onSquareClicked(e) {
@@ -37,9 +37,9 @@ class SliderView {
         $('.js-moves-countr').text(this._board.moves);
     }
 
-    onSwapSquares(e , data) {
-        const $elA = this._$rootEl.find('div:nth-child('+(data.posA+1)+')');
-        const $elB = this._$rootEl.find('div:nth-child('+(data.posB+1)+')');
+    onSwapSquares(e, data) {
+        const $elA = this._$rootEl.find('div:nth-child(' + (data.posA + 1) + ')');
+        const $elB = this._$rootEl.find('div:nth-child(' + (data.posB + 1) + ')');
         const $tmpEl = $('<span>').hide();
         $elA.before($tmpEl);
         $elB.before($elA);

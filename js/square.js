@@ -13,7 +13,6 @@ class Square {
 }
 
 
-
 class SquareCollection{
     constructor() {
         this.squares = [];
@@ -62,8 +61,10 @@ class SquareCollection{
         (squareAPos.y === squareBPos.y && Math.abs(squareAPos.x - squareBPos.x) === 1));
     }
 
-    forEach(callback) {
-        this.squares.forEach(callback);
+    *[Symbol.iterator]() {
+        for(let i= 0, len=this.squares.length; i < len; i++){
+            yield this.squares[i];
+        }
     }
 
     every(callback) {
