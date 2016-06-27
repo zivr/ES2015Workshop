@@ -28,10 +28,7 @@ class Board {
     shuffle() {
         const amountOfSquare = this.colsCount * this.rowsCount;
 
-        let squaresNum = [];
-        for (let i = 0; i < amountOfSquare; i++) {
-            squaresNum[i] = i + 1;
-        }
+        let squaresNum = [...Array(amountOfSquare)].map((x, i) => i+ 1);
         squaresNum[amountOfSquare - 1] = null;
 
         this.squares.clean();
