@@ -40,11 +40,11 @@ class Board {
             this.squares.add(new Square(squaresNum[num]));
             squaresNum.splice(num, 1);
         }
-        if (!this._isSolvable()){
+        this._checkIsSolvable().then(()=> {
+            $(this).trigger(Board.EVENTS.SHUFFEL);
+        }, () => {
             this.shuffle();
-            return;
-        }
-        $(this).trigger(Board.EVENTS.SHUFFEL);
+        });
     }
 
     moveSquare(square) {
@@ -71,19 +71,20 @@ class Board {
         }
     }
 
-    _isSolvable() {
-        var inversions = 0;
-        var squares = this.squares;
-        squares.every((squareI, idx) => {
-            squares.every((squareJ) => {
-                if (squareJ.isBlank || squareI.value > squareJ.value){
+    _checkIsSolvable() {
+        return new Promise((resolve, reject) => {
+            let inversions = 0;
+            this.squares.every((squareI, idx) => {
+                for(const squareJ in this.squares){
+                    if (squareJ.isBlank || squareI.value > squareJ.value) {
+                        inversions++;
+                    }
+                }
+                if (squareI.isBlank && idx % 2 === 1) {
                     inversions++;
                 }
             });
-            if (squareI.isBlank && idx % 2 === 1) {
-                inversions++;
-            }
+            inversions % 2 == 0 ? resolve() : reject();
         });
-        return (inversions % 2 == 0);
     };
 }
