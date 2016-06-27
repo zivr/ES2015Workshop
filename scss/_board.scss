@@ -1,0 +1,59 @@
+.board{
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: 500px;
+    transform: rotateX(50deg) rotateY(-5deg) rotateZ(10deg) translateX(25px);
+    box-shadow: 12px 7px 10px 0 rgba(50, 50, 50, 0.75);
+
+    &__cell {
+        width: 100px;
+        height: 100px;
+        display:block;
+        border-style:solid;
+        border-color:#bbb #888 #666 #aaa;
+        border-width:3px 4px 4px 3px;
+        background:#ccc;
+        color:#333;
+        line-height:2;
+        text-align:center;
+        text-decoration:none;
+        font-weight:900;
+        font-size: 30px;
+        padding-top: 40px;
+        box-sizing: border-box;
+        flex: 1;
+        cursor: pointer;
+
+        &:hover {
+            border-color: #666 #aaa #bbb #888;
+            border-width:4px 3px 3px 4px;
+            color:#000;
+        }
+
+        &--odd {
+            background-color: #BE242C;
+        }
+
+        &--even {
+            background-color: #FCFCFC;
+        }
+    }
+    &__empty-cell {
+        cursor: default;
+        &:hover {
+            border-color:#bbb #888 #666 #aaa;
+            border-width:3px 4px 4px 3px;
+            color:#333;
+        }
+    }
+
+    @for $i from 3 through 10 {
+        &--#{$i}-in-row {
+            .board__cell {
+                flex-basis: 100%/$i;
+            }
+        }
+    }
+}

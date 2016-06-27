@@ -1,0 +1,21 @@
+{
+  "name": "sliding_puzzle",
+  "description": "simple sliding puzzle game in JavaScript",
+  "main": "slidingPuzzle.js",
+  "authors": [
+    "502549131 <ziv.rosenzweig@ge.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slider Puzzle</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/slidingPuzzle.js"></script>
+</head>
+<body>
+    <h1 class='title'>Play Slider!</h1>
+    <div class="js-board">
+    </div>
+    <div class="text-middle">Moves: <span class="js-moves-countr"></span></div>
+    <script type="application/javascript">
+        (function () {
+            Game.startGame(3);
+        }());
+    </script>
+</body>
+</html>
