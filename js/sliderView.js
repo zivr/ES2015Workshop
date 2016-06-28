@@ -31,15 +31,15 @@ class SliderView {
         }
     }
 
-    onSquareClicked(e) {
-        const $clickedSquare = $(e.currentTarget);
+    onSquareClicked({currentTarget}) {
+        const $clickedSquare = $(currentTarget);
         this._board.moveSquare($clickedSquare.data('square'));
         $('.js-moves-countr').text(this._board.moves);
     }
 
-    onSwapSquares(e, data) {
-        const $elA = this._$rootEl.find('div:nth-child(' + (data.posA + 1) + ')');
-        const $elB = this._$rootEl.find('div:nth-child(' + (data.posB + 1) + ')');
+    onSwapSquares(e, {posA, posB}) {
+        const $elA = this._$rootEl.find('div:nth-child(' + (posA + 1) + ')');
+        const $elB = this._$rootEl.find('div:nth-child(' + (posB + 1) + ')');
         const $tmpEl = $('<span>').hide();
         $elA.before($tmpEl);
         $elB.before($elA);
